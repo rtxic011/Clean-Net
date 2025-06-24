@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 디지털 시민의식</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#1E88E5',
+                        secondary:'#F5F5F5'
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .menu-item {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1E88E5;
+            transition: width 0.3s;
+        }
+        .menu-item:hover::after,
+        .menu-item.active::after {
+            width: 100%;
+        }
+        .menu-item.active {
+            color: #1E88E5;
+            font-weight: 500;
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #1E88E5;
+            border-radius: 4px;
+            margin-right: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #1E88E5;
+        }
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            top: 2px;
+            left: 6px;
+            transform: rotate(45deg);
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #E0E0E0;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #1E88E5;
+            transition: width 0.3s;
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: #323232;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .3s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #1E88E5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <!-- 헤더 -->
+    <header class="w-full bg-white shadow-sm fixed top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-primary transition-colors whitespace-nowrap">로그인</button>
+                <button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">회원가입</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 네비게이션 메뉴바 -->
+    <nav class="w-full bg-white shadow-sm mt-14">
+        <div class="container mx-auto px-4">
+            <ul class="flex space-x-8 py-4 overflow-x-auto">
+                <li><a href="#" class="menu-item text-gray-700 hover:text-primary whitespace-nowrap">디지털 시민의식</a></li>
+                <li><a href="#" class="menu-item text-gray-700 hover:text-primary whitespace-nowrap">사이버 윤리 사례</a></li>
+                <li><a href="#" class="menu-item text-gray-700 hover:text-primary whitespace-nowrap">디지털 실천 다짐</a></li>
+                <li><a href="#" class="menu-item text-gray-700 hover:text-primary whitespace-nowrap">디지털 윤리 체험</a></li>
+                <li><a href="#" class="menu-item active text-primary whitespace-nowrap">나의 디지털 시민의식</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto px-4 py-10">
+        <section class="mb-10">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">나의 디지털 시민의식</h1>
+            <p class="text-gray-600 mb-6">디지털 세상에서 책임감 있는 시민으로서 나의 행동을 점검하고, 실천 다짐을 만들어보세요.</p>
+            <div class="h-1 w-20 bg-primary rounded-full"></div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- 체크리스트 작성 영역 -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">디지털 시민의식 체크리스트</h2>
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">진행률: <span id="progress-percent">0%</span></span>
+                        <span class="text-sm text-gray-600"><span id="checked-count">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-4" id="checklist">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check1" class="checklist-item">
+                        <label for="check1" class="ml-2 text-gray-700">나는 온라인에서 다른 사람의 의견을 존중하고 예의를 갖춰 대화합니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check2" class="checklist-item">
+                        <label for="check2" class="ml-2 text-gray-700">나는 온라인에서 허위 정보를 퍼뜨리지 않고, 정보의 출처를 확인합니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check3" class="checklist-item">
+                        <label for="check3" class="ml-2 text-gray-700">나는 다른 사람의 개인정보를 동의 없이 공유하지 않습니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check4" class="checklist-item">
+                        <label for="check4" class="ml-2 text-gray-700">나는 사이버 폭력이나 혐오 표현에 동참하지 않습니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check5" class="checklist-item">
+                        <label for="check5" class="ml-2 text-gray-700">나는 디지털 콘텐츠의 저작권을 존중하고 불법 다운로드를 하지 않습니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check6" class="checklist-item">
+                        <label for="check6" class="ml-2 text-gray-700">나는 온라인에서 건강한 대화와 토론 문화를 만들기 위해 노력합니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check7" class="checklist-item">
+                        <label for="check7" class="ml-2 text-gray-700">나는 디지털 기기 사용 시간을 적절히 조절하고 관리합니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check8" class="checklist-item">
+                        <label for="check8" class="ml-2 text-gray-700">나는 내 개인정보와 계정 보안을 철저히 관리합니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check9" class="checklist-item">
+                        <label for="check9" class="ml-2 text-gray-700">나는 디지털 환경에서 발생하는 문제에 대해 적극적으로 목소리를 냅니다.</label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="check10" class="checklist-item">
+                        <label for="check10" class="ml-2 text-gray-700">나는 디지털 기술을 통해 사회에 긍정적인 변화를 만들기 위해 노력합니다.</label>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">나만의 디지털 시민의식 다짐</h3>
+                    <textarea id="custom-pledge" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="4" placeholder="나만의 디지털 시민의식 다짐을 작성해보세요."></textarea>
+                </div>
+
+                <button id="generate-btn" class="mt-6 bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center whitespace-nowrap">
+                    <i class="ri-file-text-line mr-2"></i>
+                    선언문 생성하기
+                </button>
+            </div>
+            <!-- 선언문 미리보기 및 다운로드 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">나의 선언문</h2>
+                
+                <div id="preview-container" class="bg-secondary p-6 rounded-lg mb-6 min-h-[300px] flex items-center justify-center">
+                    <p class="text-gray-500 text-center" id="empty-message">체크리스트를 작성하고 선언문을 생성해보세요.</p>
+                    <div id="pledge-preview" class="hidden">
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-primary mb-2">디지털 시민의식 선언문</h3>
+                            <p class="text-sm text-gray-500">2025년 6월 24일</p>
+                        </div>
+                        <div id="pledge-content" class="text-gray-700 mb-6"></div>
+                        <div class="text-right">
+                            <p class="font-medium" id="user-name">김민준</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <label for="user-name-input" class="text-gray-700">이름</label>
+                        <input type="text" id="user-name-input" class="border border-gray-300 rounded-md p-2 w-2/3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="이름을 입력하세요">
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <label class="text-gray-700">배경 색상</label>
+                        <div class="flex space-x-2">
+                            <button class="w-8 h-8 rounded-full bg-blue-100 border-2 border-transparent hover:border-primary color-option" data-color="bg-blue-100"></button>
+                            <button class="w-8 h-8 rounded-full bg-green-100 border-2 border-transparent hover:border-primary color-option" data-color="bg-green-100"></button>
+                            <button class="w-8 h-8 rounded-full bg-yellow-100 border-2 border-transparent hover:border-primary color-option" data-color="bg-yellow-100"></button>
+                            <button class="w-8 h-8 rounded-full bg-purple-100 border-2 border-transparent hover:border-primary color-option" data-color="bg-purple-100"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <label class="text-gray-700">날짜 표시</label>
+                        <label class="switch">
+                            <input type="checkbox" id="show-date" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mt-6 space-y-3">
+                    <button id="download-btn" class="w-full bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center whitespace-nowrap disabled:bg-gray-300 disabled:cursor-not-allowed" disabled>
+                        <i class="ri-download-line mr-2"></i>
+                        이미지로 다운로드
+                    </button>
+                    <button id="share-btn" class="w-full bg-white text-primary border border-primary px-6 py-3 !rounded-button hover:bg-primary/5 transition-colors flex items-center justify-center whitespace-nowrap disabled:text-gray-400 disabled:border-gray-300 disabled:cursor-not-allowed" disabled>
+                        <i class="ri-share-line mr-2"></i>
+                        공유하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">청소년 상담 지원</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span>청소년 상담 전화: 1388 (24시간 운영)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-message-2-line"></i>
+                            </div>
+                            <span>카카오톡: 청소년상담1388</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-global-line"></i>
+                            </div>
+                            <span>온라인 상담: www.cyber1388.kr</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">사이버 폭력 신고</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-shield-check-line"></i>
+                            </div>
+                            <span>경찰청 사이버안전국: 182</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-computer-line"></i>
+                            </div>
+                            <span>방송통신심의위원회: 1377</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-school-line"></i>
+                            </div>
+                            <span>학교폭력 신고: 117</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">관련 기관</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition-colors">한국정보화진흥원</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">한국청소년상담복지개발원</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">교육부</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">과학기술정보통신부</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">&copy; 2025 디지털 시민의식 프로젝트. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 hover:bg-gray-600">
+                            <i class="ri-facebook-fill"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 hover:bg-gray-600">
+                            <i class="ri-twitter-x-fill"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 hover:bg-gray-600">
+                            <i class="ri-instagram-fill"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 hover:bg-gray-600">
+                            <i class="ri-youtube-fill"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 토스트 메시지 -->
+    <div id="toast" class="toast">
+        <div class="flex items-center">
+            <i class="ri-check-line mr-2"></i>
+            <span id="toast-message">성공적으로 처리되었습니다.</span>
+        </div>
+    </div>
+
+    <script id="checklist-handler">
+        document.addEventListener('DOMContentLoaded', function() {
+            const checklistItems = document.querySelectorAll('.checklist-item');
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = document.getElementById('progress-percent');
+            const checkedCount = document.getElementById('checked-count');
+            
+            function updateProgress() {
+                const totalItems = checklistItems.length;
+                let checkedItems = 0;
+                
+                checklistItems.forEach(item => {
+                    if (item.checked) {
+                        checkedItems++;
+                    }
+                });
+                
+                const percentage = Math.round((checkedItems / totalItems) * 100);
+                progressBar.style.width = `${percentage}%`;
+                progressPercent.textContent = `${percentage}%`;
+                checkedCount.textContent = checkedItems;
+                
+                // 다운로드 버튼 활성화 여부
+                const downloadBtn = document.getElementById('download-btn');
+                const shareBtn = document.getElementById('share-btn');
+                
+                if (checkedItems > 0) {
+                    downloadBtn.disabled = false;
+                    shareBtn.disabled = false;
+                } else {
+                    downloadBtn.disabled = true;
+                    shareBtn.disabled = true;
+                }
+            }
+            
+            checklistItems.forEach(item => {
+                item.addEventListener('change', updateProgress);
+            });
+        });
+    </script>
+
+    <script id="pledge-generator">
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generate-btn');
+            const pledgePreview = document.getElementById('pledge-preview');
+            const emptyMessage = document.getElementById('empty-message');
+            const pledgeContent = document.getElementById('pledge-content');
+            const userNameInput = document.getElementById('user-name-input');
+            const userNameDisplay = document.getElementById('user-name');
+            const customPledge = document.getElementById('custom-pledge');
+            const showDateToggle = document.getElementById('show-date');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const previewContainer = document.getElementById('preview-container');
+            
+            // 이름 입력 시 실시간 업데이트
+            userNameInput.addEventListener('input', function() {
+                userNameDisplay.textContent = this.value || '김민준';
+            });
+            
+            // 배경색 변경
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const color = this.getAttribute('data-color');
+                    
+                    // 이전 선택 제거
+                    colorOptions.forEach(opt => {
+                        opt.classList.remove('border-primary');
+                        opt.classList.add('border-transparent');
+                    });
+                    
+                    // 현재 선택 표시
+                    this.classList.remove('border-transparent');
+                    this.classList.add('border-primary');
+                    
+                    // 배경색 변경
+                    previewContainer.className = `p-6 rounded-lg mb-6 min-h-[300px] ${color}`;
+                });
+            });
+            
+            // 날짜 표시 토글
+            showDateToggle.addEventListener('change', function() {
+                const dateElement = pledgePreview.querySelector('.text-sm.text-gray-500');
+                if (dateElement) {
+                    dateElement.style.display = this.checked ? 'block' : 'none';
+                }
+            });
+            
+            // 선언문 생성
+            generateBtn.addEventListener('click', function() {
+                const checklistItems = document.querySelectorAll('.checklist-item:checked');
+                
+                if (checklistItems.length === 0) {
+                    showToast('최소 하나 이상의 항목을 선택해주세요.');
+                    return;
+                }
+                
+                // 로딩 상태 표시
+                this.disabled = true;
+                this.innerHTML = '<i class="ri-loader-4-line animate-spin mr-2"></i> 생성 중...';
+                
+                setTimeout(() => {
+                    // 선택된 항목 내용 가져오기
+                    let selectedItems = [];
+                    checklistItems.forEach(item => {
+                        const labelText = document.querySelector(`label[for="${item.id}"]`).textContent;
+                        selectedItems.push(`<p class="mb-2">• ${labelText}</p>`);
+                    });
+                    
+                    // 사용자 정의 다짐 추가
+                    let userPledge = '';
+                    if (customPledge.value.trim()) {
+                        userPledge = `<div class="mt-4 p-3 bg-white/50 rounded-md"><p class="font-medium mb-1">나의 다짐:</p><p>${customPledge.value}</p></div>`;
+                    }
+                    
+                    // 선언문 내용 생성
+                    pledgeContent.innerHTML = `
+                        <p class="mb-4">나는 디지털 세상에서 책임감 있는 시민으로서 다음과 같이 실천할 것을 다짐합니다:</p>
+                        <div class="mb-4">${selectedItems.join('')}</div>
+                        ${userPledge}
+                    `;
+                    
+                    // 미리보기 표시
+                    emptyMessage.classList.add('hidden');
+                    pledgePreview.classList.remove('hidden');
+                    
+                    // 버튼 상태 복원
+                    this.disabled = false;
+                    this.innerHTML = '<i class="ri-file-text-line mr-2"></i> 선언문 생성하기';
+                    
+                    showToast('선언문이 생성되었습니다.');
+                }, 1000);
+            });
+            
+            // 다운로드 버튼
+            document.getElementById('download-btn').addEventListener('click', function() {
+                if (pledgePreview.classList.contains('hidden')) {
+                    showToast('먼저 선언문을 생성해주세요.');
+                    return;
+                }
+                
+                // 실제로는 html2canvas 등을 사용해 이미지로 변환하는 로직이 필요합니다
+                showToast('이미지가 다운로드되었습니다.');
+            });
+            
+            // 공유 버튼
+            document.getElementById('share-btn').addEventListener('click', function() {
+                if (pledgePreview.classList.contains('hidden')) {
+                    showToast('먼저 선언문을 생성해주세요.');
+                    return;
+                }
+                
+                showToast('공유 링크가 복사되었습니다.');
+            });
+            
+            // 첫 번째 색상 옵션 기본 선택
+            colorOptions[0].click();
+        });
+        
+        // 토스트 메시지 표시 함수
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

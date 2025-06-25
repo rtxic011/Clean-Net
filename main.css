@@ -1,0 +1,732 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif; /* Pretendard 폰트 적용 */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* 전반적인 배경색 통일 */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* 색상 변수 정의 (통일을 위해) */
+:root {
+    --primary-blue: #1890ff; /* 메인 파란색 */
+    --light-blue: #e6f7ff; /* 연한 파란색 (아이콘 배경 등) */
+    --dark-blue: #0056b3; /* 진한 파란색 (제목 등) */
+    --gray-text: #666;
+    --light-gray-border: #e0e0e0;
+    --box-shadow-light: rgba(0, 0, 0, 0.05);
+    --box-shadow-medium: rgba(0, 0, 0, 0.1);
+    --box-shadow-strong: rgba(0, 0, 0, 0.15);
+}
+
+
+/* Header */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid var(--light-gray-border);
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex; /* 로고 이미지와 텍스트를 한 줄에 표시 */
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 10px; /* 이미지와 텍스트 사이 간격 */
+    padding-right: 20px; /* 로고와 첫 내비게이션 메뉴 사이 간격 확보 */
+}
+
+header .logo img {
+    height: 50px; /* 로고 이미지 크기 */
+    width: auto;
+}
+
+header .logo p {
+    font-size: 1.2rem; /* 텍스트 크기 */
+    font-weight: bold;
+    color: var(--dark-blue);
+    white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 */
+}
+
+header nav {
+    flex-grow: 1; /* 내비게이션이 남은 공간을 차지하도록 */
+    display: flex;
+    justify-content: flex-start; /* 메뉴를 로고 옆에 붙도록 왼쪽 정렬 */
+}
+
+header nav ul {
+    display: flex;
+    margin-left: 20px; /* 로고와 메뉴 사이 추가 간격 */
+}
+
+header nav ul li {
+    margin-left: 25px; /* 메뉴 항목 간 간격 */
+}
+
+header nav ul li a {
+    color: var(--gray-text);
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-blue);
+}
+
+header .search-login {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* 검색/로그인 버튼을 오른쪽으로 밀착 */
+}
+
+header .search-login input {
+    padding: 8px;
+    border: 1px solid var(--light-gray-border);
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+header .search-login button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+header .search-login button:hover {
+    background-color: var(--dark-blue);
+}
+
+
+/* Hero Section */
+.hero-section {
+    background-color: #e0f2f7;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    margin-bottom: 30px;
+}
+
+.hero-section .hero-buttons .primary-button {
+    background-color: var(--primary-blue);
+    color: white;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .hero-buttons .primary-button:hover {
+    background-color: var(--dark-blue);
+}
+
+.hero-section .hero-buttons .secondary-button {
+    background-color: #6c757d;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .hero-buttons .secondary-button:hover {
+    background-color: #5a6268;
+}
+
+.hero-section .hero-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 50%;
+    height: auto;
+    z-index: 0;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 모든 섹션의 부가 설명 문구 스타일 (section-description) */
+.section-description {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    margin-bottom: 60px; /* 카드와 설명 문구 사이의 공백 넓히기 */
+    line-height: 1.5;
+}
+
+/* 디지털 시민 의식의 핵심 가치 섹션 */
+.core-values-section {
+    background-color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.core-values-section h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.value-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.value-card {
+    background-color: #fff;
+    border: 1px solid var(--light-gray-border);
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(33.33% - 20px);
+    min-width: 280px;
+    box-shadow: 0 4px 8px var(--box-shadow-light);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--box-shadow-medium);
+}
+
+.value-card .icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-blue);
+}
+
+.value-card .icon-circle i {
+    font-size: 28px;
+    color: var(--primary-blue);
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.value-card .learn-more-link {
+    color: var(--primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.value-card .learn-more-link:hover {
+    color: var(--dark-blue);
+}
+
+
+/* What is Digital Citizenship Section - 새롭게 카드형으로 변경 */
+.what-is-digital-citizenship {
+    background-color: #fff;
+    padding: 80px 0; /* 패딩을 다른 카드형 섹션과 동일하게 조정 */
+    text-align: center;
+}
+
+.what-is-digital-citizenship h2 {
+    font-size: 2.2rem; /* 제목 크기 조정 */
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* section-description 클래스 사용 */
+
+.citizenship-cards-grid { /* 새로운 그리드 컨테이너 */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.citizenship-card { /* 새로운 카드 스타일 (value-card와 유사) */
+    background-color: #fff;
+    border: 1px solid var(--light-gray-border);
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(33.33% - 20px);
+    min-width: 280px;
+    box-shadow: 0 4px 8px var(--box-shadow-light);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.citizenship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--box-shadow-medium);
+}
+
+.citizenship-card .icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-blue);
+}
+
+.citizenship-card .icon-circle i {
+    font-size: 28px;
+    color: var(--primary-blue);
+}
+
+.citizenship-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.citizenship-card p {
+    font-size: 0.95rem; /* 텍스트 크기 조정 */
+    color: var(--gray-text);
+    margin-bottom: 20px;
+    line-height: 1.5; /* 줄 간격 조정으로 자연스러운 개행 유도 */
+    word-break: keep-all; /* 단어가 잘리지 않고 통째로 다음 줄로 넘어가도록 (선택 사항) */
+}
+
+/* learn-more-link는 value-card와 동일 스타일 사용 */
+
+
+/* "실제 사례로 배우는 사이버 윤리" 섹션 */
+.cyber-ethics-cases-new {
+    background-color: #fff;
+    padding: 80px 0;
+}
+
+.cyber-ethics-cases-new .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cyber-ethics-cases-new .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.cyber-ethics-cases-new .text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cyber-ethics-cases-new h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.cyber-ethics-cases-new > .container > .content-wrapper > .text-content > p {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    margin-bottom: 30px;
+}
+
+.cyber-ethics-cases-new ul {
+    margin-bottom: 30px;
+}
+
+.cyber-ethics-cases-new ul li {
+    font-size: 1rem;
+    color: var(--gray-text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.cyber-ethics-cases-new ul li i {
+    color: var(--primary-blue);
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.cyber-ethics-cases-new .cases-button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cyber-ethics-cases-new .cases-button:hover {
+    background-color: var(--dark-blue);
+}
+
+.cyber-ethics-cases-new .image-content {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cyber-ethics-cases-new .image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px var(--box-shadow-strong);
+}
+
+/* "디지털 실천 다짐" 섹션 새 레이아웃 스타일 */
+.digital-commitment-section.new-layout {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.digital-commitment-section.new-layout h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* section-description 클래스 사용 */
+
+.commitment-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.commitment-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(24% - 15px);
+    min-width: 220px;
+    box-shadow: 0 4px 10px var(--box-shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.commitment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px var(--box-shadow-strong);
+}
+
+.commitment-card .icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+}
+
+.commitment-card .icon-box i {
+    font-size: 28px;
+    color: var(--primary-blue);
+}
+
+.commitment-card h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.commitment-card p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.4;
+}
+
+.my-commitment-button-new {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.my-commitment-button-new:hover {
+    background-color: var(--dark-blue);
+}
+
+/* "디지털 윤리 체험관" 섹션 */
+.digital-ethics-experience-center {
+    background-color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.digital-ethics-experience-center h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* section-description 클래스 사용 */
+
+.experience-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.experience-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--box-shadow-light);
+    width: calc(32% - 20px);
+    min-width: 280px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px var(--box-shadow-strong);
+}
+
+.experience-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px 10px 0 0;
+}
+
+.experience-card .card-content {
+    padding: 25px;
+}
+
+.experience-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.experience-card p {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.experience-card .experience-link {
+    color: var(--primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.experience-card .experience-link:hover {
+    color: var(--dark-blue);
+}
+
+
+/* 도움 요청 섹션 */
+.help-section {
+    background-color: #f4f7fc;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.help-section h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* section-description 클래스 사용 */
+
+.help-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.help-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(33.33% - 20px);
+    min-width: 280px;
+    box-shadow: 0 4px 15px var(--box-shadow-light);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.help-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px var(--box-shadow-strong);
+}
+
+.help-card .icon-circle-small {
+    width: 50px;
+    height: 50px;
+    background-color: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-blue);
+}
+
+.help-card .icon-circle-small i {
+    font-size: 24px;
+    color: var(--primary-blue);
+}
+
+.help-card h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.help-card p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.help-card .call-link,
+.help-card .report-link,
+.help-card .info-link {
+    color: var(--primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.help-card .call-link:hover,
+.help-card .report-link:hover,
+.help-card .info-link:hover {
+    color: var(--dark-blue);
+}
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    font-size: 0.9rem;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #eee;
+}
+
+footer p, footer ul li {
+    margin-bottom: 8px;
+    color: #bbb;
+}
+
+footer ul li a {
+    color: #bbb;
+}
+
+footer ul li a:hover {
+    color: #fff;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    color: #aaa;
+}
+
+/* Responsive Design */

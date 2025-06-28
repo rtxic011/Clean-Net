@@ -5,6 +5,21 @@
     box-sizing: border-box;
 }
 
+.modal-content {
+            position: relative;
+            z-index: 1;
+        }
+        .modal-content::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("path/to/banner.jpg");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
 body {
     font-family: 'Pretendard', sans-serif; /* Pretendard 폰트 적용 */
     line-height: 1.6;
@@ -179,11 +194,13 @@ header .search-login button:hover {
 
 .hero-section .hero-image {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    max-width: 50%;
-    height: auto;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: 0;
+    opacity: 0.2;
+    pointer-events: none;
 }
 
 .hero-section .container {

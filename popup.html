@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal-content {
+            position: relative;
+            z-index: 1;
+        }
+        .modal-content::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("path/to/banner.jpg");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="commitModal" class="modal">
+        <div class="modal-content">
+            <h2>다짐 작성하기</h2>
+            <form id="commitForm">
+                <label for="nickname">이름(닉네임)</label>
+                <input type="text" id="nickname" name="nickname" required>
+                <br>
+                <br>
+                <label for="tag">태그</label>
+                <select id="tag" name="tag" required>
+                    <option value="" disabled selected>태그를 선택해주세요.</option>
+                    <option value="환경보호">환경보호</option>
+                    <option value="디지털 디톡스">디지털 디톡스</option>
+                    <option value="현명한 습관">현명한 습관</option>
+                    <option value="기타">기타</option>
+                </select>
+                <br>
+                <br>
+                <label for="title">다짐 제목</label>
+                <input type="text" id="title" name="title" required>
+                <br>
+                <br>
+                <label for="content">다짐할 내용</label>
+                <textarea id="content" name="content" rows="4" required></textarea>
+                <br>
+                <br>
+                <div class="modal-buttons">
+                    <button type="button" id="cancelBtn">취소</button>
+                    <button type="submit">작성완료</button>
+                </div>
+            </form>
+            <script>
+                document.getElementById('cancelBtn').onclick = function() {
+                    window.close();
+                };
+
+                document.getElementById('commitForm').onsubmit = function(e) {
+                    e.preventDefault();
+
+                    // 입력값 가져오기
+                    const nickname = document.getElementById('nickname').value;
+                    const tag = document.getElementById('tag').value;
+                    const title = document.getElementById('title').value;
+                    const content = document.getElementById('content').value;
+
+                    // 부모창에 함수가 있으면 호출
+                    if (window.opener && !window.opener.closed) {
+                        window.opener.addCommitCard({
+                            nickname,
+                            tag,
+                            title,
+                            content,
+                            date: new Date().toISOString().slice(0, 10)
+                        });
+                    }
+                    window.close();
+                };
+            </script>
+        </div>
+    </div>
+</body>
+</html>

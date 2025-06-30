@@ -1,0 +1,573 @@
+/* Header */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid var(--light-gray-border);
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 90%; */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header .logo {
+    display: flex; /* 로고 이미지와 텍스트를 한 줄에 표시 */
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 10px; /* 이미지와 텍스트 사이 간격 */
+    padding-right: 20px; /* 로고와 첫 내비게이션 메뉴 사이 간격 확보 */
+}
+
+header .logo img {
+    height: 50px; /* 로고 이미지 크기 */
+    width: auto;
+}
+
+header .logo p {
+    font-size: 1.2rem; /* 텍스트 크기 */
+    font-weight: bold;
+    color: var(--dark-blue); /* 로고 텍스트도 새 primary-blue 사용 */
+    white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 */
+}
+
+header .main-nav {
+    flex-grow: 1; /* 내비게이션이 남은 공간을 차지하도록 */
+    display: flex;
+    justify-content: flex-start; /* 메뉴를 로고 옆에 붙도록 왼쪽 정렬 */
+}
+
+header .main-nav ul {
+    display: flex;
+    margin-left: 20px; /* 로고와 메뉴 사이 추가 간격 */
+    list-style: none;
+}
+
+header .main-nav ul li {
+    margin-left: 25px; /* 메뉴 항목 간 간격 */
+}
+
+header .main-nav ul li a {
+    color: var(--gray-text);
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+header .main-nav ul li a:hover {
+    color: var(--primary-blue);
+}
+
+header .search-login {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .search-login input {
+    padding: 8px;
+    border: 1px solid var(--light-gray-border);
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+header .search-login button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .search-login button:hover {
+    background-color: var(--dark-blue);
+}
+
+/* responsive design for header */
+@media (max-width: 1024px) {
+    header nav ul li {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .logo {
+        padding-right: 0;
+        justify-content: center;
+    }
+
+    header nav {
+        flex-grow: unset;
+        margin-left: 0;
+        justify-content: center;
+    }
+    
+    header nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    header .search-login {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    header .search-login input {
+        width: 60%;
+        max-width: 250px;
+    }
+}
+
+
+/* Added styles for main-nav to ensure horizontal layout and prevent line breaks */
+.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav ul li a {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+
+/* Hero Section */
+.hero-section {
+    background-color: #e0f2f7;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    margin-bottom: 30px;
+}
+
+.hero-section .hero-buttons .primary-button {
+    background-color: var(--primary-blue);
+    color: white;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .hero-buttons .primary-button:hover {
+    background-color: var(--dark-blue);
+}
+
+.hero-section .hero-buttons .secondary-button {
+    background-color: #6c757d;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .hero-buttons .secondary-button:hover {
+    background-color: #5a6268;
+}
+
+.hero-section .hero-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 50%;
+    height: auto;
+    z-index: 0;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Header */
+.header {
+    width: 100%;
+    padding: 40px 0 0 0;
+    background: #fff;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 같은 줄, 왼쪽 정렬 */
+    gap: 60%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+.header-title {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+.header-description {
+    font-size: 1.1em;
+    padding: 0 15%;
+    color: var(--text-color-light);
+    margin-bottom: 20px;
+    /* padding: 0 32px; */
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.write-button {
+    margin: 0;
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 25px;
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+/* Responsive Design 내부의 header 관련 미디어 쿼리 */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2em;
+    }
+
+    .write-button {
+        position: static; /* Remove absolute positioning on smaller screens */
+        margin: 20px auto 0; /* Center button below description */
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-description {
+        font-size: 1em;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+/* Global Styles */
+:root {
+    --primary-color: #000000; /* A shade of green */
+    --secondary-color: #6C757D; /* Gray */
+    --background-color: #ffffff;
+    --card-bg-light-yellow: #fffadc; /* Light yellow for environment card */
+    --card-bg-light-blue: #e0f2f7; /* Light blue for detox card */
+    --card-bg-light-green: #eafbe1; /* Light green for habit card */
+    --text-color-dark: #333;
+    --text-color-light: #666;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --primary-blue: #1890ff; 
+    /* --primary-blue: #0056b3; 메인 파란색 (이전 dark-blue와 유사하게) */
+    --light-blue: #e0f2f7; /* 연한 파란색 (아이콘 배경 등) */
+    --dark-blue: #0056b3; /* 더 진한 파란색 (제목 등) */
+    --gray-text: #555; /* 회색 텍스트 약간 진하게 */
+    --light-gray-background: #f8f9fa; /* 기본 배경색 */
+    --alt-background: #e9ecef; /* 다른 섹션 배경색 */
+    --light-gray-border: #e0e0e0;
+    --box-shadow-light: rgba(0, 0, 0, 0.05);
+    --box-shadow-medium: rgba(0, 0, 0, 0.1);
+    --box-shadow-strong: rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--background-color);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto; /* 상하 여백 20px, 좌우 자동 (중앙 정렬) */
+    padding: 0 20px; /* 좌우 패딩 20px */
+}
+
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px; /* Ensure cards have a consistent minimum height */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Card specific background colors */
+.card-environment {
+    /* background-color: var(--card-bg-light-yellow); */
+    border: rgb(152, 152, 152) 1px solid;
+    border-radius: 10px;
+}
+
+.card-detox {
+    /* background-color: var(--card-bg-light-blue); */
+    /* background-color: var(--card-bg-light-yellow); */
+    /* border: black 1px solid; */
+    border: rgb(152, 152, 152) 1px solid;
+    border-radius: 10px;
+}
+
+.card-habit {
+    /* background-color: var(--card-bg-light-green); */
+    /* background-color: var(--card-bg-light-yellow); */
+    /* border: black 1px solid; */
+    border: rgb(152, 152, 152) 1px solid;
+    border-radius: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.85em;
+    color: var(--text-color-light);
+}
+
+.card-header .category {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+/* Category specific colors */
+.card-environment .category {
+    background-color: #f7e08c; /* Orange for environment */
+}
+
+.card-detox .category {
+    background-color: #89c8ff; 
+    /* Blue for detox */
+}
+
+.card-habit .category {
+    background-color: #bae48b; 
+    /* Green for habit */
+}
+
+
+.card-title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.card-description {
+    font-size: 0.95em;
+    color: var(--text-color-dark);
+    flex-grow: 1; /* Allows description to take up available space */
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+    color: var(--text-color-light);
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+.card-footer .author {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.card-footer .likes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-footer .likes i {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.card-footer .likes i:hover {
+    color: var(--primary-color);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.pagination a {
+    color: var(--text-color-dark);
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #f1f1f1;
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sort-filter {
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: none;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dropbtn,
+    .search-bar input {
+        font-size: 0.9em;
+    }
+
+    .pagination a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    font-size: 0.9rem;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #eee;
+}
+
+footer p, footer ul li {
+    margin-bottom: 8px;
+    color: #bbb;
+}
+
+footer ul li a {
+    color: #bbb;
+}
+
+footer ul li a:hover {
+    color: #fff;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    color: #aaa;
+}

@@ -19,7 +19,7 @@
             opacity: 0.2;
             z-index: -1;
         }
-        
+
 body {
     font-family: 'Pretendard', sans-serif; /* Pretendard 폰트 적용 */
     line-height: 1.6;
@@ -152,11 +152,25 @@ header .search-login button:hover {
 
 /* Hero Section */
 .hero-section {
-    background-color: #e0f2f7;
-    padding: 80px 0;
-    text-align: center;
     position: relative;
+    width: 100vw;
+    min-height: 350px; /* 원하는 높이로 조정 */
+    padding: 0;
+    margin: 0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* 기존 배경 제거 */
+}
+
+.hero-section image {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 1; /* 필요시 1로 */
+    pointer-events: none;
 }
 
 .hero-section h1 {
@@ -194,9 +208,7 @@ header .search-login button:hover {
 
 .hero-section .hero-image {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
     z-index: 0;
     opacity: 0.2;
@@ -206,6 +218,15 @@ header .search-login button:hover {
 .hero-section .container {
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0; /* 위아래 여백만 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    text-align: center;
 }
 
 /* 모든 섹션의 부가 설명 문구 스타일 (section-description) */
